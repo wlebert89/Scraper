@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Onion Scraper</a>
+  </div>
+</nav>
+<div id="main-title">
+  <div id="title">Onion Scraper</div>
+  <div id="subtitle">Top tier political reporting from TheOnion.com</div>
+  <button id="scrape" type="button" class="btn btn-primary">Scrape</button>
+</div>
+
+<div id="article-feed">
+  {{#each article}}
+  <div class="article">
+    <div class="article-title">
+      {{this.title}}
+    </div>
+    <div class="article-summary">
+      {{this.summary}}
+    </div>
+    <button type="button" href="{{this.link}}" class="btn btn-primary article-link">View Article Source</button>
+  </div>
+  {{/each}}
+</div>

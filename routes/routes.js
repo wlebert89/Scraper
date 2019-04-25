@@ -1,10 +1,20 @@
 var axios = require("axios");
 var cheerio = require("cheerio");
-// var db = require("../models");
-// var express = require("express");
-// var app = express();
+var db = require("../models");
 
 module.exports = function (app) {
+
+    app.get("/", function (req, res) {
+        db.Article.find({}).then(function (dbArticle) {
+            // console.log(dbArticle);
+            var hbObject = {
+                article: dbArticle
+            }
+            res.render("index", hbObject);
+        }).catch(function (err) {
+            res.json(err);
+        });
+    });
 
     app.get("/scrape", function (req, res) {
         axios.get("https://politics.theonion.com/").then(function (response) {
@@ -19,16 +29,12 @@ module.exports = function (app) {
                 result.link = $(this).find("a.js_entry-link").attr("href");
                 result.summary = $(this).find("div.excerpt").text();
 
-                console.log("----------------------------------------")
-                console.log(result.title);
-                console.log("")
-                console.log(result.link);
-                console.log("")
-                console.log(result.summary);
-                console.log("----------------------------------------")
-                console.log("")
+                db.Article.create(result).then(function (dbArticle) {
+                    console.log(dbArticle);
+                }).catch(function (err) {
+                    console.log(err);
+                });
             });
-
             res.send("Scrape Complete");
         });
     });
