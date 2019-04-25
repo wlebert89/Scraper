@@ -17,7 +17,10 @@
     <div class="article-summary">
       {{this.summary}}
     </div>
-    <button type="button" href="{{this.link}}" class="btn btn-primary article-link">View Article Source</button>
+    <a href="{{this.link}}" target="_blank">
+      <button type="button" class="btn btn-primary article-link">View Article Source</button>
+    </a>
+
   </div>
   {{/each}}
 </div>
