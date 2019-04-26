@@ -5,6 +5,7 @@ $(document).on("click", "#scrape", function () {
         method: "GET",
         url: "/scrape"
     });
+    location.reload();
 });
 
 $(document).on("click", ".article-notes", function () {

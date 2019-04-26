@@ -29,12 +29,11 @@ module.exports = function (app) {
                 result.summary = $(this).find("div.excerpt").text();
 
                 db.Article.create(result).then(function (dbArticle) {
-                    console.log(dbArticle);
+                    // res.json(dbArticle);
                 }).catch(function (err) {
                     console.log(err);
                 });
             });
-            location.reload();
         });
     });
 
