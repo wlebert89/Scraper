@@ -8,6 +8,7 @@ $(document).on("click", "#scrape", function () {
 });
 
 $(document).on("click", ".article-notes", function () {
+    $("#note-display").text("");
     var id = $(this).attr("data-id");
     $("#modal-title").text("Notes for article " + id);
     $(".save-note").attr("data-id", id);
@@ -16,8 +17,9 @@ $(document).on("click", ".article-notes", function () {
         method: "GET",
         url: "/article/" + id
     }).then(function (data) {
-        console.log(data);
-        $("#note-display").text(data.note.text);
+        if (data.note.text !== undefined) {
+            $("#note-display").text(data.note.text);
+        }
     });
 });
 
