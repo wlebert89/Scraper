@@ -1,7 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Onion Scraper</a>
+{{!-- <nav class="navbar">
+  <a class="navbar-brand" href="/">Onion Scraper</a>
   </div>
-</nav>
+</nav> --}}
+
 <div id="main-title">
   <div id="title">Onion Scraper</div>
   <div id="subtitle">Top tier political reporting from TheOnion.com</div>
@@ -18,8 +19,9 @@
       {{this.summary}}
     </div>
     <a href="{{this.link}}" target="_blank">
-      <button type="button" class="btn btn-primary article-link">View Article Source</button>
+      <button type="button" class="btn btn-primary article-button article-link">View Article Source</button>
     </a>
+    <button data-id="{{this._id}}" type="button" class="btn btn-primary article-button article-notes">Notes</button>
 
   </div>
   {{/each}}

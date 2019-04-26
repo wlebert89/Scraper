@@ -6,7 +6,6 @@ module.exports = function (app) {
 
     app.get("/", function (req, res) {
         db.Article.find({}).then(function (dbArticle) {
-            // console.log(dbArticle);
             var hbObject = {
                 article: dbArticle
             }
@@ -35,7 +34,7 @@ module.exports = function (app) {
                     console.log(err);
                 });
             });
-            res.send("Scrape Complete");
+            res.redirect("back");
         });
     });
 
