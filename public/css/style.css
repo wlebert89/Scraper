@@ -59,19 +59,19 @@ body {
     margin-bottom: 10px;
 }
 
-.article-button {
+.button-main {
     display: inline;
     margin-right: 10px;
     background: #b4385d;
     border: none;
 }
 
-.article-button:hover {
+.button-main:hover {
     background: #8a2a47;
     border: none;
 }
 
-.article-button:focus {
+.button-main:focus {
     background: #8a2a47 !important;
 }
 

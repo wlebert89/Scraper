@@ -34,8 +34,42 @@ module.exports = function (app) {
                     console.log(err);
                 });
             });
-            res.redirect("back");
+            location.reload();
         });
     });
 
+    app.get("/article/:id", function (req, res) {
+        db.Article.findOne({
+                _id: req.params.id
+            }).populate("note")
+            .then(function (dbArticle) {
+                res.json(dbArticle);
+            }).catch(function (err) {
+                res.json(err);
+            });
+    });
+
+    app.post("/article/:id", function (req, res) {
+
+        db.Note.create(req.body).then(function (dbNote) {
+
+            return db.Article.findOneAndUpdate({
+                _id: req.params.id
+            }, {
+                note: dbNote._id
+            }, {
+                new: true
+            });
+        }).then(function (dbArticle) {
+            db.Article.findOne({
+                    _id: req.params.id
+                }).populate("note")
+                .then(function (dbArticle) {
+                    res.json(dbArticle);
+                    console.log(dbArticle);
+                }).catch(function (err) {
+                    res.json(err);
+                });
+        });
+    });
 }

@@ -1,8 +1,3 @@
-{{!-- <nav class="navbar">
-  <a class="navbar-brand" href="/">Onion Scraper</a>
-  </div>
-</nav> --}}
-
 <!-- NOTES MODAL -->
 <div class="modal fade" id="notes-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -23,18 +18,20 @@
         <div id="note-display"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save note</button>
+        <button type="button" class="btn btn-primary button-main save-note">Save note</button>
       </div>
     </div>
   </div>
 </div>
 
+{{!-- MAIN BANNER --}}
 <div id="main-title">
   <div id="title">Onion Scraper</div>
   <div id="subtitle">Top tier political reporting from TheOnion.com</div>
   <button id="scrape" type="button" class="btn btn-primary">Scrape</button>
 </div>
 
+{{!-- SCRAPED ARTICLE FEED --}}
 <div id="article-feed">
   {{#each article}}
   <div class="article">
@@ -45,11 +42,10 @@
       {{this.summary}}
     </div>
     <a href="{{this.link}}" target="_blank">
-      <button type="button" class="btn btn-primary article-button article-link">View Article Source</button>
+      <button type="button" class="btn btn-primary button-main article-link">Read Article</button>
     </a>
-    <button data-id="{{this._id}}" type="button" class="btn btn-primary article-button article-notes"
+    <button data-id="{{this._id}}" type="button" class="btn btn-primary button-main article-notes"
       data-toggle="modal" data-target="#notes-modal">Notes</button>
-
   </div>
   {{/each}}
 </div>
