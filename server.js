@@ -14,9 +14,12 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/newsScraper", {
-    useNewUrlParser: true
-});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScraper";
+mongoose.connect(MONGODB_URI);
+
+// mongoose.connect("mongodb://localhost/newsScraper", {
+//     useNewUrlParser: true
+// });
 
 app.engine(
     "handlebars",
