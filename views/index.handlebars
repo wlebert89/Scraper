@@ -3,6 +3,32 @@
   </div>
 </nav> --}}
 
+<!-- NOTES MODAL -->
+<div class="modal fade" id="notes-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <textarea class="form-control" id="text-box" rows="3" placeholder="Write a note..."></textarea>
+          </div>
+        </form>
+        <div id="note-display"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save note</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="main-title">
   <div id="title">Onion Scraper</div>
   <div id="subtitle">Top tier political reporting from TheOnion.com</div>
@@ -21,7 +47,8 @@
     <a href="{{this.link}}" target="_blank">
       <button type="button" class="btn btn-primary article-button article-link">View Article Source</button>
     </a>
-    <button data-id="{{this._id}}" type="button" class="btn btn-primary article-button article-notes">Notes</button>
+    <button data-id="{{this._id}}" type="button" class="btn btn-primary article-button article-notes"
+      data-toggle="modal" data-target="#notes-modal">Notes</button>
 
   </div>
   {{/each}}

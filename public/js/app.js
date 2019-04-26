@@ -10,5 +10,5 @@ $(document).on("click", "#scrape", function () {
 
 $(document).on("click", ".article-notes", function () {
     var id = $(this).attr("data-id");
-    console.log(id);
+    $("#modal-title").text("Notes for article " + id);
 });
