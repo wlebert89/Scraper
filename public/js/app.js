@@ -1,11 +1,9 @@
-console.log("hello world")
-
-$(document).on("click", "#scrape", function () {
+$(document).on("click", "#scrape", function (cb) {
     $.ajax({
         method: "GET",
         url: "/scrape"
     });
-    location.reload();
+    cb(location.reload());
 });
 
 $(document).on("click", ".article-notes", function () {
@@ -19,7 +17,7 @@ $(document).on("click", ".article-notes", function () {
         url: "/article/" + id
     }).then(function (data) {
         if (data.note.text !== undefined) {
-            $("#note-display").text(data.note.text);
+            $("#note-display").text(data.note.text).append("<i class='fas fa-times delete-note' data-id=" + id + "></i>");
         }
     });
 });
@@ -33,6 +31,15 @@ $(document).on("click", ".save-note", function () {
     var id = $(this).attr("data-id");
 
     $.post("/article/" + id, newNote, function (response) {
-        $("#note-display").text(response.note.text);
+        $("#note-display").text(response.note.text).append("<i class='fas fa-times delete-note' data-id=" + id + "></i>");
+    });
+});
+
+$(document).on("click", ".delete-note", function () {
+    var id = $(this).attr("data-id");
+    console.log(id);
+    $.ajax({
+        method: "DELETE",
+        url: "/article/" + id
     });
 });

@@ -59,6 +59,18 @@ body {
     margin-bottom: 10px;
 }
 
+#note-display {
+    background: #eee;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.delete-note {
+    float: right;
+    cursor: pointer;
+}
+
 .button-main {
     display: inline;
     margin-right: 10px;

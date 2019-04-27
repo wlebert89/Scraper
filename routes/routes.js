@@ -71,4 +71,11 @@ module.exports = function (app) {
                 });
         });
     });
+
+    app.delete("/article/:id", function (req, res) {
+        console.log("route hit");
+        db.Note.findOneAndDelete({
+            _id: req.params.id
+        });
+    });
 }
